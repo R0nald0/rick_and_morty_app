@@ -14,7 +14,8 @@ class CardCharacter extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(20),
          color: Colors.amber,
-         height: MediaQuery.sizeOf(context).height * .3,
+         height: MediaQuery.sizeOf(context).height * .7,
+         width:  MediaQuery.sizeOf(context).width,
         child: Card(
            shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12)
@@ -25,14 +26,20 @@ class CardCharacter extends StatelessWidget {
             children: [
               Expanded(
                   child: Image.network(characterDto.image,
-                height: 20,
+               
                 fit: BoxFit.cover,
               )),
-              Text( 
-                characterDto.name,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Text( 
+                    characterDto.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
                 ),
               )
             ],
