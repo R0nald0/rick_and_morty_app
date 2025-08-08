@@ -26,11 +26,11 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquitetura MVV
 
 
  ### Estrutura do Projeto
- *  **lib/**/: Possui a pasta app com lógica do aplicativo,estrutura base.
- *  **lib/app_widget**/: Classe principal contendo as configurções do MaterialApp.
+ *  **lib/**/: Possui a pasta app com estrutura base do aplicativo e arquivo main.dart.
+ *  **lib/app_widget**/: Classe principal,ponto de entrado do app contendo as configurções do MaterialApp.
  *  **lib/app_module**/: Classe com módulo e rota principal do app.
- *  **lib/app/core**/: Possui classes de acesso global do aplicativo,client http,tema.
- *  **lib/app/modulos**/: Possui a pasta de cada módulo e suas resepectivas classes.
+ *  **lib/app/core**/: Possui classes de acesso global do aplicativo,client http,tema,excessões personaliadas,widget.
+ *  **lib/app/modulos**/: Possui a pasta de cada módulo e sua resepectiva classe de módulo,view-model e page.
  *  **lib/app/repository**: Possui classes com lógica para acesso a dados externos.
  *  **lib/app/usecase**: Possui classes com lógica de negócio do app.
    
@@ -53,9 +53,9 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquitetura MVV
 
  ### Tecnologias utilizadas
  ---
- * Flutter modeular para injeção de Dependência
+ * Flutter modular para injeção de Dependência
  * ChangeNotifier para Gerencimento de estado.
- * Consumo da API com Package [Dio](https://pub.dev/packages/dio/)
+ * Consumo da API Rest com Package [Dio](https://pub.dev/packages/dio/)
 
   vesão do Flutter da 3.27.1
   vesão do Dart da 3.6.0
