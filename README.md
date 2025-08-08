@@ -29,8 +29,9 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquitetura MVV
  *  **lib/**/: Possui a pasta app com estrutura base do aplicativo e arquivo main.dart.
  *  **lib/app_widget**/: Classe principal,ponto de entrado do app contendo as configurções do MaterialApp.
  *  **lib/app_module**/: Classe com módulo e rota principal do app.
- *  **lib/app/core**/: Possui classes de acesso global do aplicativo,client http,tema,excessões personaliadas,widget.
+ *  **lib/app/core**/: Possui classes de acesso global do aplicativo,client http,tema,excessões personaliadas,widget,dto.
  *  **lib/app/modulos**/: Possui a pasta de cada módulo e sua resepectiva classe de módulo,view-model e page.
+ *  **lib/app/model**: Possui classes de modelo do app
  *  **lib/app/repository**: Possui classes com lógica para acesso a dados externos.
  *  **lib/app/usecase**: Possui classes com lógica de negócio do app.
    
