@@ -15,7 +15,7 @@ Status (vivo, morto, desconhecido)
 
 Espécie
 
-O projeto foi desenvolvido com foco em boas práticas de código,arquiteturaa MVVM,layout responsívo,separação de responsabilidades e consumo de API REST.
+O projeto foi desenvolvido com foco em boas práticas de código,arquitetura MVVM,layout responsivo e boa usuabilidade,separação de responsabilidades e consumo de API REST.
 
 
 #### Imagens do App
@@ -27,8 +27,8 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquiteturaa MV
 
  ### Estrutura do Projeto
  *  **lib/**/: Possui a pasta app com lógica do aplicativo,estrutura base.
- *  **lib/**/: Classe principal contendo as configurções do MaterialApp.
- *  **lib/**/: Classe com módulo e rota principal do app.
+ *  **lib/app_widget**/: Classe principal contendo as configurções do MaterialApp.
+ *  **lib/app_module**/: Classe com módulo e rota principal do app.
  *  **lib/app/core**/: Possui classes de acesso global do aplicativo,client http,tema.
  *  **lib/app/modulos**/: Possui a pasta de cada módulo e suas resepectivas classes.
  *  **lib/app/repository**: Possui classes com lógica para acesso a dados externos.
@@ -47,8 +47,8 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquiteturaa MV
 
 ### Funcionalidades do App
 ---
-* Listagem de personagens,scroll infinito.
-* Exibição de tela de detalhes do personagen, contendo nome,status e espécie.
+* Listagem de personagens com seus respectivos nomes e imagens,scroll infinito.
+* Exibição de tela de detalhes do personagem,contendo nome,status e espécie.
 
 
  ### Tecnologias utilizadas
