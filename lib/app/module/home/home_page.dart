@@ -5,7 +5,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:test_fteam_rick_and_morty/app/module/home/home_view_model.dart';
 import 'package:test_fteam_rick_and_morty/app/module/home/state/home_state.dart';
-import 'package:test_fteam_rick_and_morty/app/module/home/widget/card_character.dart';
+import 'package:test_fteam_rick_and_morty/app/core/widget/card_character.dart';
+
+import '../../core/widget/rick_and_mort_app_loading.dart';
 
 class HomePage extends StatefulWidget {
   final HomeViewModel homeViewModel;
@@ -17,8 +19,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late ScrollController _scrollController;
-  Timer? debounceTimer;
-  void _scrollTo() async {
+  Timer? _debounceTimer;
+  void _infinitScroll() async {
     final direction = _scrollController.position.userScrollDirection;
     final HomeState(:status) = widget.homeViewModel.homeState;
 
@@ -26,8 +28,8 @@ class _HomePageState extends State<HomePage> {
             _scrollController.position.maxScrollExtent - 500 &&
         direction == ScrollDirection.reverse &&
         status != HomeStateStatus.loading) {
-      debounceTimer?.cancel();
-      debounceTimer = Timer(Duration(milliseconds: 300), () async {
+      _debounceTimer?.cancel();
+      _debounceTimer = Timer(Duration(milliseconds: 300), () async {
         await widget.homeViewModel.findAll();
       });
     }
@@ -38,34 +40,39 @@ class _HomePageState extends State<HomePage> {
     _scrollController = ScrollController();
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _scrollController.addListener(_scrollTo);
-      widget.homeViewModel.addListener(() {
-        final HomeViewModel(:homeState) = widget.homeViewModel;
-        if (homeState.status == HomeStateStatus.error) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(
-              '${homeState.errorMessage}',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ));
-        }
-      });
+      _scrollController.addListener(_infinitScroll);
+       showMessage();
+
       await widget.homeViewModel.findAll();
     });
+  }
+
+  void showMessage() {
+    widget.homeViewModel.addListener(() {
+      final HomeViewModel(:homeState) = widget.homeViewModel;
+      if (homeState.status == HomeStateStatus.error) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            '${homeState.errorMessage}',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ));
+      }
+    });
+    
   }
 
   @override
   void dispose() {
     widget.homeViewModel.dispose();
     _scrollController.dispose();
-    debounceTimer?.cancel();
+    _debounceTimer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
       appBar: AppBar(
         title: Text("Characters"),
       ),
@@ -73,7 +80,7 @@ class _HomePageState extends State<HomePage> {
         return ListenableBuilder(
           listenable: Modular.get<HomeViewModel>(),
           builder: (context, child) {
-            final HomeState(:character, :status, :errorMessage) =
+            final HomeState(characters:character, :status, :errorMessage) =
                 Modular.get<HomeViewModel>().homeState;
             return Stack(
               alignment: Alignment.center,
@@ -81,16 +88,11 @@ class _HomePageState extends State<HomePage> {
                 switch (Modular.get<HomeViewModel>().homeState.status) {
                   HomeStateStatus.initial => Center(
                       child: Text(
-                        'Verificando dados',
+                        'Buscando dados...',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
-                  HomeStateStatus.error => Center(
-                      child: Text(
-                          'Não Conseguimos buscas dados dos personagemns',
-                        textAlign: TextAlign.center,
-                          ),
-                    ),
+                 
                   _ => GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: constraint.maxWidth <= 600 ? 1 : 3),
@@ -99,23 +101,16 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         final char = character[index];
                         return CardCharacter(
-                            characterDto: char,
+                            character: char,
                             onTap: () {
                               Navigator.of(context)
-                                  .pushNamed('/detail', arguments: char);
+                                  .pushNamed('/detail/', arguments: char);
                             });
                       },
                     ),
                 },
-                Offstage(
-                  offstage: status != HomeStateStatus.loading,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SizedBox(
-                        height: MediaQuery.sizeOf(context).height * .1,
-                        child: Center(child: CircularProgressIndicator())),
-                  ),
-                )
+                
+                RickAndMortyAppLoading(isLoading: status != HomeStateStatus.loading,)
               ],
             );
           },
@@ -124,3 +119,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

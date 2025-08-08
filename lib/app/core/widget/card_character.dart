@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_fteam_rick_and_morty/app/core/dto/character_response_dto.dart';
+import 'package:test_fteam_rick_and_morty/app/model/character.dart';
 
 class CardCharacter extends StatelessWidget {
-  final CharacterDto characterDto;
+  final Character character;
   final VoidCallback onTap;
-  const CardCharacter({super.key, required this.characterDto ,required this.onTap});
+  const CardCharacter({super.key, required this.character ,required this.onTap});
 
 
   @override
@@ -24,7 +24,7 @@ class CardCharacter extends StatelessWidget {
             spacing: 10,
             children: [
               Expanded(
-                  child: Image.network(characterDto.image,
+                  child: Image.network(character.image,
                   width: MediaQuery.sizeOf(context).width ,
                  fit: BoxFit.cover,
               )),
@@ -33,7 +33,7 @@ class CardCharacter extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.cover,
                   child: Text( 
-                    characterDto.name,
+                    character.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

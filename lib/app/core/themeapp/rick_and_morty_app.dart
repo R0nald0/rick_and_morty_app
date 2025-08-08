@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 final class RickAndMortyAppTheme {
   static final theme = ThemeData(
     useMaterial3: true,
+    scaffoldBackgroundColor: Colors.amber,
+  
+   progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.amber),
     textTheme: TextTheme(
         titleMedium: TextStyle(
             fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold),

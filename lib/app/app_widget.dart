@@ -9,6 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context){
     
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Rick And Mory',
       theme: RickAndMortyAppTheme.theme,
       routerConfig: Modular.routerConfig,

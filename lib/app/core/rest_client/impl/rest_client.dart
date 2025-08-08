@@ -4,8 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:test_fteam_rick_and_morty/app/core/constants/app_constants.dart';
 import 'package:test_fteam_rick_and_morty/app/core/dto/character_response_dto.dart';
 import 'package:test_fteam_rick_and_morty/app/core/exception/rest_client_exception.dart';
+import 'package:test_fteam_rick_and_morty/app/core/rest_client/i_rick_and_morty_app_rest_client.dart';
 
-class RestClient {
+class RestClient implements IRickAndMortyAppRestClient{
   late Dio _dio;
 
   RestClient() {
@@ -21,9 +22,9 @@ class RestClient {
     );
   }
 
+  @override 
   Future<List<CharacterDto>> getAll({int? page = 1}) async {
     try {
-     
       final Response(:data) = await _dio.get('character',queryParameters: {
         'page':page
       });

@@ -30,12 +30,14 @@ class Info{
      };
   }
 } 
+  
   class CharacterDto{
     final  String name;    
     final String  species;
     final String status;
     final String image;
-
+  
+  
   CharacterDto({ required this.name,required this.species,required this.status,required this.image});
 
   factory CharacterDto.fromMap(Map<String,dynamic> map){

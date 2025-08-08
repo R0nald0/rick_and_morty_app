@@ -1,17 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:test_fteam_rick_and_morty/app/core/exception/repository_exception.dart';
 import 'package:test_fteam_rick_and_morty/app/module/home/state/home_state.dart';
-import 'package:test_fteam_rick_and_morty/app/usecase/find_character_usecase.dart';
+
+import '../../usecase/i_find_character_usecase.dart';
 
 class HomeViewModel extends ChangeNotifier {
-  final FindCharacterUsecase _findCharacterUsecase;
+  final IFindCharacterUseCase _findCharacterUsecase;
   HomeState _homeState;
   HomeState get homeState => _homeState;
   int _page = 0;
 
-  HomeViewModel({required FindCharacterUsecase findCharacterUsecase})
+  HomeViewModel({required IFindCharacterUseCase findCharacterUsecase})
       : _findCharacterUsecase = findCharacterUsecase,
         _homeState = HomeState.initial();
 
@@ -22,11 +21,12 @@ class HomeViewModel extends ChangeNotifier {
       _page++;
   
       final characters = await _findCharacterUsecase(page: _page);
-      final charactersUpdated = [..._homeState.character, ...characters];
+       _homeState.characters.addAll([...characters]); 
       
       _homeState = _homeState.copyWith(
-          status: HomeStateStatus.success, character: charactersUpdated);
-      log('size : ${charactersUpdated.length}'); 
+          status: HomeStateStatus.success, characters: _homeState.characters);
+   
+
     } on RepositoryException catch (e) {
       _homeState = _homeState.copyWith(
         status: HomeStateStatus.error,
