@@ -1,7 +1,7 @@
 # Rick And Morty
 
  Aplicativo desenvolvido em Flutter/Dart como solução para  desafio técnico.
-O objetivo do aplicativo é consumir a API pública Rick and Morty API para:
+O objetivo do aplicativo é consumir a API pública [Rick and Morty API](https://rickandmortyapi.com/) para:
 
 Consultar e listar personagens da série Rick and Morty
 
@@ -55,7 +55,7 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquiteturaa MV
  ---
  * Flutter modeular para injeção de Dependência
  * ChangeNotifier para Gerencimento de estado.
- * Consumo da Bluesky API via com Package Dio
+ * Consumo da Bluesky API via com Package [Dio](https://pub.dev/packages/dio/)
 
   vesão do Flutter da 3.27.1
   vesão do Dart da 3.6.0
