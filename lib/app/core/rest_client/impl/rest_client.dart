@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:test_fteam_rick_and_morty/app/core/constants/app_constants.dart';
-import 'package:test_fteam_rick_and_morty/app/core/dto/character_response_dto.dart';
+import 'package:test_fteam_rick_and_morty/app/core/dto/character_dto.dart';
 import 'package:test_fteam_rick_and_morty/app/core/exception/rest_client_exception.dart';
 import 'package:test_fteam_rick_and_morty/app/core/rest_client/i_rick_and_morty_app_rest_client.dart';
 

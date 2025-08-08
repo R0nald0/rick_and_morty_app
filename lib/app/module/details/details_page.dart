@@ -35,7 +35,7 @@ class DetailsPageState extends State<DetailsPage> {
                 child: Container(
                   width: constraints.maxWidth,
                   height: constraints.maxHeight * .25,
-                  padding: EdgeInsets.all(2),
+                  padding: EdgeInsets.symmetric(vertical: 20,horizontal: 7),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: radiusContainer, topRight: radiusContainer),
@@ -79,7 +79,7 @@ class CharacterInfo extends StatelessWidget {
               char.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.titleMedium,
+              style: theme.textTheme.bodyMedium,
             ),
           ),
           FittedBox(

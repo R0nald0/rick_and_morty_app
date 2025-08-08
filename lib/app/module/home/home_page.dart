@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     final HomeState(:status) = widget.homeViewModel.homeState;
 
     if (_scrollController.position.pixels >=
-            _scrollController.position.maxScrollExtent - 500 &&
+            _scrollController.position.maxScrollExtent - 800 &&
         direction == ScrollDirection.reverse &&
         status != HomeStateStatus.loading) {
       _debounceTimer?.cancel();

@@ -7,7 +7,7 @@ final class RickAndMortyAppTheme {
   
    progressIndicatorTheme: ProgressIndicatorThemeData(color: Colors.amber),
     textTheme: TextTheme(
-        titleMedium: TextStyle(
+        bodyLarge: TextStyle(
             fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold),
         bodyMedium: TextStyle(
           fontSize: 18,
