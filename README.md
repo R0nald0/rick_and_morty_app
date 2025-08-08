@@ -57,8 +57,8 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquitetura MVV
  * ChangeNotifier para Gerencimento de estado.
  * Consumo da API Rest com Package [Dio](https://pub.dev/packages/dio/)
 
-  vesão do Flutter da 3.27.1
-  vesão do Dart da 3.6.0
+  vesão do sdk Flutter  3.27.1
+  vesão do sdk Dart  3.6.0
   
   ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
   ![Badge em dart](http://img.shields.io/static/v1?label=LENGUAGE&message=%20DART&color=BLUEN&style=for-the-badge)
