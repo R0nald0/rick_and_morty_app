@@ -55,7 +55,7 @@ O projeto foi desenvolvido com foco em boas práticas de código,arquitetura MVV
  ---
  * Flutter modeular para injeção de Dependência
  * ChangeNotifier para Gerencimento de estado.
- * Consumo da Bluesky API via com Package [Dio](https://pub.dev/packages/dio/)
+ * Consumo da API com Package [Dio](https://pub.dev/packages/dio/)
 
   vesão do Flutter da 3.27.1
   vesão do Dart da 3.6.0
