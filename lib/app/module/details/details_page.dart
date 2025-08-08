@@ -14,6 +14,7 @@ class DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     final char = widget.char;
     final radiusContainer =  Radius.circular(20);
+    final theme = Theme.of(context);
     return Scaffold(
         appBar: AppBar(
           title: Text('Character'),
@@ -57,31 +58,27 @@ class DetailsPageState extends State<DetailsPage> {
                         fit: BoxFit.cover,
                         child: Text(
                           char.name,
-                          style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.titleMedium,
                         ),
                       ),
                       FittedBox(
                         fit: BoxFit.cover,
                         child: Text(
                           char.species,
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
+                          maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodyMedium ,
                         ),
                       ),
                       FittedBox(
                         fit: BoxFit.cover,
                         child: Text(
                           char.status,
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
-                        ),
+                          maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.bodyMedium),
                       ),
                     ],
                   ),

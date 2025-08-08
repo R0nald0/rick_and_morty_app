@@ -12,6 +12,6 @@ class HomeModule extends Module{
   @override
   void routes(RouteManager r) {
     super.routes(r);
-    r.child('/', child:(context) => HomePage());
+    r.child('/', child:(context) => HomePage(homeViewModel: Modular.get<HomeViewModel>(),));
   }
 }

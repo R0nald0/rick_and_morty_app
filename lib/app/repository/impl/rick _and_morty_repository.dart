@@ -16,9 +16,9 @@ class RickAndMortyRepository implements IRickAndMortyRepository {
       : _restClient = restClinet;
 
   @override
-  Future<List<CharacterDto>> findAll() async {
+  Future<List<CharacterDto>> findAll({int? page}) async {
     try {
-      return _restClient.getAll();
+      return _restClient.getAll(page: page);
     } on RestClientException catch(e,s) {
        log(e.message, error: e,stackTrace: s);
       throw RepositoryException(message: 'Erro ao buscar dados');

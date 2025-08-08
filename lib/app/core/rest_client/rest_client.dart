@@ -21,9 +21,12 @@ class RestClient {
     );
   }
 
-  Future<List<CharacterDto>> getAll() async {
+  Future<List<CharacterDto>> getAll({int? page = 1}) async {
     try {
-      final Response(:data) = await _dio.get('character');
+     
+      final Response(:data) = await _dio.get('character',queryParameters: {
+        'page':page
+      });
       final results = data['results'] as List;
 
       return results

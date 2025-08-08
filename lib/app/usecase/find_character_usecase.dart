@@ -7,6 +7,6 @@ class FindCharacterUsecase {
 
   FindCharacterUsecase({required IRickAndMortyRepository repository }):_repository = repository;
 
-  Future<List<CharacterDto>> call() => _repository.findAll();
+  Future<List<CharacterDto>> call({int? page}) => _repository.findAll(page: page);
 
 }

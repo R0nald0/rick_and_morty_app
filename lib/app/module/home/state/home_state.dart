@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:test_fteam_rick_and_morty/app/core/dto/character_response_dto.dart';
 
 enum HomeStateStatus{
-  loading,error,success
+  initial,loading,error,success
 }
 class HomeState {
    final List<CharacterDto> character;
@@ -18,7 +18,7 @@ class HomeState {
     required this.status
   });
     
-  HomeState.initial():this(character: [],status: HomeStateStatus.success);
+  HomeState.initial():this(character: [],status: HomeStateStatus.initial);
 
 
   HomeState copyWith({
